@@ -1,35 +1,39 @@
 const nextBtn = document.querySelector(".next");
 const prevBtn = document.querySelector(".prev");
-let slides = 1;
+const mySlides = document.querySelectorAll(".mySlides");
+const dots = document.querySelectorAll(".dot");
+let slideIndex = 0;
 
 const currentSlide = (num) => {
-    slides = num || 1;
-    showSlide(slides);
+    showSlide(num);
 }
 
 const showSlide = (num) => {
-    const mySlides = document.querySelectorAll(".mySlides");
-    const dots = document.querySelectorAll(".dot");
+    if (num >= mySlides.length) slideIndex = 0;
+    else if (num < 0) slideIndex = mySlides.length - 1;
+    else slideIndex = num;
 
     mySlides.forEach((slide, index) => {
         slide.style.display = "none";
         dots[index].style.backgroundColor = "aqua";
     })
 
-    mySlides[num - 1].style.display = "block";
-    dots[num - 1].style.backgroundColor = "red";
+    mySlides[slideIndex].style.display = "block";
+    dots[slideIndex].style.backgroundColor = "red";
 }
 
-showSlide(slides);
+const autoSlide = () => {
+    showSlide(slideIndex + 1);
+    setTimeout(autoSlide, 5000);
+}
 
 nextBtn.addEventListener("click", () => {
-    if (slides < 3) {
-        showSlide(slides += 1);
-    }
+    showSlide(slideIndex + 1);
 });
 
 prevBtn.addEventListener("click", () => {
-    if (slides > 1) {
-        showSlide(slides -= 1);
-    }
+    showSlide(slideIndex - 1);
 });
+
+showSlide(slideIndex);
+setTimeout(autoSlide, 5000);
