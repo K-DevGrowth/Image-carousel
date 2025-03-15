@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Carousel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="image.png" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="image copy.png" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <img src="image copy 2.png" style="width:100%">
+        </div>
+
+
+        <button class="prev">Previous</button>
+        <button class="next">Next</button>
+    </div>
+
+    <div class="flex-box">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
